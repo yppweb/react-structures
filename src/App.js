@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './assets/logo192.png';
 import './App.css';
-import Page from "./pages/index";
+import Page from './pages/index';
 
 function App() {
   return (
