@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import '../App.css';
-import Component from '@/component/index';
-import Lint from './lint/index';
+// 懒加载 lazy需要与suspense一起使用
+const Component = lazy(() => import('@/component/index'));
+const Lint = lazy(() => import('./lint/index'));
+
 function Page() {
-  // const a = 'ds';
   return (
     <div className="demo">
       <Component />

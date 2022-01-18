@@ -21,18 +21,6 @@
       "pre-commit": "echo 'husky' && npm run test"
     }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
@@ -42,8 +30,9 @@
     "@babel/runtime": "^7.16.7",
     "babel-eslint": "^10.1.0",
     "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^5.0.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^5.2.7",
+    "css-loader": "^2.1.1",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-standard": "^16.0.3",
@@ -57,6 +46,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.0.0",
     "husky": "^4.3.8",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
     "style-loader": "^2.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.1",

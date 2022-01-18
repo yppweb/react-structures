@@ -1,9 +1,12 @@
 const webpackBase = require('./webpack.base.js');
-const { merge } = require('webpack-merge');
+const {
+  merge
+} = require('webpack-merge');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const ESLintPlugin = require('eslint-webpack-plugin');
-
+console.log('dev',
+  process.env.NODE_ENV);
 /**
  * 开发环境需要配置功能
  * 1.mode为development
@@ -24,6 +27,8 @@ const config = {
   // 生成映射关系，便于找到错误代码产生的文件
   devtool: 'inline-source-map',
   devServer: {
+    // 如果你使用的是 webpack-dev-server，那么就无需使用 HotModuleReplacementPlugin plugin。
+    //  webpack-dev-server 使用 hot 选项决定是否启用/禁用 HMR。
     hot: true,
     // 配置代理 详细属性参考 https://webpack.docschina.org/configuration/dev-server/#devserverproxy
     proxy: {
@@ -35,8 +40,6 @@ const config = {
   plugins: [
     // 直观的可以看到打包后每个包的体积，便于找出优化
     new BundleAnalyzerPlugin()
-    // eslint代码规范检测
-    // new ESLintPlugin()
   ]
 };
 
