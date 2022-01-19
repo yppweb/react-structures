@@ -81,3 +81,15 @@ eslint代码规范检验一般是开发过程中需要，不需要用webpack的�
 1.react.lazy(()=>import(../component)) 需要放在suspense标签内
 2.路由懒加载： component: () => import('./component')
 3.import('./component').then(({default:component})=>{ //component即为组件内容}) import()返回一个promise/可用于async await
+
+### Tree Shaking 编译过程中自动清除未被import的export/treeshking是减小打包的bundle size很重要的一个手段，
+
+1.production环境下，默认Tree Shaking
+2.原理：webpack的Tree Shaking是基于es module静态分析的，编译期间能确定哪些模块没用过，并且配合解构【import {demoExport} from 'demoMudule'】可以确定哪些export没用到,对未使用的做标记，在【压缩阶段】可以删除未被使用的export/module
+3.满足Tree Shaking的三个条件 ：
+a.使用es module的模块规范、使用解构赋值 
+b.默认开启 optimization.usedExports = true 
+c.使用压缩代码的插件
+注意：
+1.package.json文件中可配置sideEffects【副作用】,配置sideEffects的文件不可被Tree Shaking
+2.tree shaking的级别是export，如果export一个对象，但是只使用了对象中某些属性，其余的属性不是能被tree shaking,故尽量分散的去写export

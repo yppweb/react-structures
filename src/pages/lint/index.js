@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../App.css';
+// import { cube } from '../index';
 let timer = null;
 
 function Lint() {
@@ -10,6 +11,7 @@ function Lint() {
       import('@/component/index')
         .then(({ default: Comp }) => {
           setComp(Comp);
+          // cube();
         });
     }, 3000);
     return () => {

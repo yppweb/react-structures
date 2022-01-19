@@ -14,3 +14,7 @@ function Page() {
 }
 
 export default Page;
+
+export function cube() {
+  console.log('cube');
+}
