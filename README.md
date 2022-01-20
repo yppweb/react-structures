@@ -93,3 +93,22 @@ c.使用压缩代码的插件
 注意：
 1.package.json文件中可配置sideEffects【副作用】,配置sideEffects的文件不可被Tree Shaking
 2.tree shaking的级别是export，如果export一个对象，但是只使用了对象中某些属性，其余的属性不是能被tree shaking,故尽量分散的去写export
+
+### webpack构建流程
+
+1.webpack启动后，会从entry开始，递归解析出entry依赖的所有module，找到module之后会根据module.rules里面定义的规则对其进行转化，转换结束后，再解析出当前module依赖的module，这些module会以entry为单位分组为chunk,最后webpack会将chunk转换为文件输出为bundle(output)。在整个构建流程中，会在合适的时机执行plugin定义的逻辑，以达到其优化功能
+
+
+### webpack 打包原理
+
+1.根据文件之间的依赖关系进行静态分析，将这个模块根据规则生成静态资源，当webpack处理程序时 会递归地构造一个依赖关系图，然后再打包成一个或者多个bundle
+
+### module/chunk/bundle
+
+1.module---指的就是单个文件，开发中的单个模块
+2.chunk--webpack在进行模板的依赖分析时分割出的代码、以entry为单位的分组的module;自动拆分为chunk的情况：node-module文件、import动态引入的组件、通过splitchunks拆分出的文件
+3.bundle---打包后输出的文件
+
+### webpack热更新原理
+
+1.用webpack-dev-server启动一个服务，浏览器和服务器通过websocket建立长连接，webpack内部的watch会监听文件的修改，一旦修改webpack会重新打包编译入内存，webpack-dev-server通过中间件webpack-dev-middleware与webpack进行交互，每次热更新都会请求一个带hash的json文件和一个js，websocket传递的就是这个hash，内部机制通过检查hash值进行热更新
